@@ -34,19 +34,4 @@ public class AirMovement : Movement
         AddThrust(thrust);
     }
 
-    protected override void RotateAuto()
-    {
-        float targetAngle = Vector2.SignedAngle(Vector2.up, AnimationVector() + Vector2.up);
-
-        rigidbody.SetRotation(Mathf.MoveTowardsAngle(rigidbody.rotation, targetAngle, angularSpeed * Time.fixedDeltaTime));
-    }
-    Vector2 AnimationVector()
-    {
-        Vector2 animVector = GetVelocity() / GetMaxSpeed() + Vector2.up;
-
-        animVector.Scale(new Vector2(1, .5f));
-
-        return animVector;
-    }
-
 }

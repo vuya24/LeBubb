@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PreciseTargetingSystem
+public class TargetingSystem
 {
     Vector2 lastPosition = Vector2.positiveInfinity;
     Vector2 velocity;
@@ -22,7 +22,7 @@ public class PreciseTargetingSystem
         
         Vector2 direction = currentPosition - (Vector2)weapon.transform.position;
         float relativeVelocityAngle = Vector2.Angle(direction, velocity) * Mathf.Deg2Rad;
-        float speedRatio = velocity.magnitude / weapon.ProjectileSpeed;
+        float speedRatio = velocity.magnitude / weapon.projectileSpeed;
 
         float distanceToTravel1, distanceToTravel2;
         int numberOfSolutions = MathExpanded.SolveQuadraticEquasion(1 - speedRatio * speedRatio,
@@ -31,7 +31,7 @@ public class PreciseTargetingSystem
                                             out distanceToTravel1,
                                             out distanceToTravel2);
 
-        float timeToTravel = Mathf.Max(-distanceToTravel1, -distanceToTravel2) / weapon.ProjectileSpeed;
+        float timeToTravel = Mathf.Max(-distanceToTravel1, -distanceToTravel2) / weapon.projectileSpeed;
 
         Vector2 finalPosition = currentPosition + velocity * timeToTravel;
         Debug.DrawLine(weapon.transform.position, finalPosition);

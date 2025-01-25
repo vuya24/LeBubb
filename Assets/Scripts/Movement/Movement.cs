@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Movement : IObservable<Movement>
+public class Movement
 {
     //movement
     protected Vector2 targetPosition = Vector2.zero, targetRotation, thrust, torque;
@@ -20,8 +20,6 @@ public class Movement : IObservable<Movement>
 
     protected Action<Vector2> moveAction; //switch delegate between direct and world point movement
     protected Action rotationAction;
-
-    private List<IObserver<Movement>> observers = new List<IObserver<Movement>>();
 
     public Vector2 Thrust => thrust;
     public virtual float MaxThrust => maxSpeed;
@@ -41,8 +39,6 @@ public class Movement : IObservable<Movement>
 
         moveAction(targetPosition);
         rotationAction();
-
-        Notify();
     }
 
     protected float CalculateAcceleration()
@@ -132,35 +128,5 @@ public class Movement : IObservable<Movement>
     public void SetRigidbody(Rigidbody2D rigidbody)
     {
         this.rigidbody = rigidbody;
-    }
-
-
-    void Notify()
-    {
-        if (observers.Count < 1)
-            return;
-        foreach (var observer in observers)
-            observer.UpdateObserver();
-    }
-
-    void ClearObservers()
-    {
-        if (observers.Count < 1)
-            return;
-        foreach (var observer in observers)
-            observer.StopObserver();
-        observers.Clear();
-    }
-
-    public void AddObserver(IObserver<Movement> observer)
-    {
-        observers.Add(observer);
-        observer.StartObserver(this);
-    }
-
-    public void RemoveObserver(IObserver<Movement> observer)
-    {
-        observer.StopObserver();
-        observers.Remove(observer);
     }
 }
