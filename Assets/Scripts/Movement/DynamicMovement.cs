@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AirMovement : Movement
+public class DynamicMovement : Movement
 {
     [SerializeField]
     protected float maxAcceletation;
