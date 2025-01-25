@@ -33,6 +33,7 @@ public class TurretDriver
     /// </summary>
     public void Update()
     {
+
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetAngle, angularSpeed * Time.deltaTime);
     }
 

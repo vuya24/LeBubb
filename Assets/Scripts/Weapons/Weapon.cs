@@ -8,9 +8,9 @@ public class Weapon : MonoBehaviour
     public float damage, range, projectileSpeed = float.PositiveInfinity, spread, roundsPerMinute;
 
     [SerializeField]
-    public int multishot = 1;
+    public int multishot = 5;
 
-    public float ShootPeriod => 60 / roundsPerMinute;
+    public float ShootPeriod = 1;
     public float ProjectileLifeTime => range / projectileSpeed;
 
     [SerializeField]
@@ -19,7 +19,18 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
 
-    private float soundPitchDispersion = 0.05f;
+    [SerializeField]
+    Transform playerTransform;
+
+    [SerializeField]
+    private GameObject projectile;
+
+    [SerializeField]
+    private Transform bulletPosition;
+
+    //private float soundPitchDispersion = 0.05f;
+
+    bool isShooting = false;
 
     //[SerializeField]
     //Bullet projectile;
@@ -39,14 +50,23 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        turretDriver.LookAt(playerTransform.position);
         turretDriver.Update();
+
+        if(IsInRange(playerTransform.position) && !isShooting)
+        {
+            isShooting = true;
+            StartCoroutine(Shoot());
+        }
+
+        if (!IsInRange(playerTransform.position))
+        {
+            isShooting = false;
+        }
     }
 
-    bool isShooting = false;
     public void Trigger()
     {
-        if (!isShooting)
-            StartCoroutine(Shoot());
     }
 
     public bool IsInRange(Vector2 position)
@@ -54,27 +74,29 @@ public class Weapon : MonoBehaviour
         return (position - (Vector2)barrelTransform.position).magnitude < range;
     }
 
-    public void UseTargetingSystem(Vector2 position)
-    {
-        turretDriver.LookAt(targetingSystem.UpdateTargetPosition(Time.deltaTime, position, this));
-    }
-
     void ShootProjectile()
     {
+        GameObject bullet = ObjectPool.instance.GetPooledObject();
+
+        if (bullet != null)
+        {
+            bullet.transform.position = bulletPosition.position + gameObject.transform.up;
+            bullet.SetActive(true);
+        }
     }
 
     IEnumerator Shoot()
     {
-        isShooting = true;
 
-        audioSource.pitch = Random.Range(1 - soundPitchDispersion, 1 + soundPitchDispersion);
+        //audioSource.pitch = Random.Range(1 - soundPitchDispersion, 1 + soundPitchDispersion);
 
-        audioSource.PlayOneShot(audioSource.clip);
+        //audioSource.PlayOneShot(audioSource.clip);
 
-        for (int i = 0; i < multishot; i++)
+        while(isShooting)
+        {
             ShootProjectile();
+            yield return new WaitForSeconds(ShootPeriod);
+        }
 
-        yield return new WaitForSeconds(ShootPeriod);
-        isShooting = false;
     }
 }
