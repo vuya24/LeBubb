@@ -4,7 +4,7 @@ namespace Udar.SceneManager
 {
     public class SceneFieldExample : MonoBehaviour
     {
-        [SerializeField] public SceneField _sceneField;
+        [SerializeField] private SceneField _sceneField;
 
         private void OnValidate()
         {

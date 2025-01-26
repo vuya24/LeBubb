@@ -25,6 +25,13 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            rb.velocity = Vector2.zero;
+            gameObject.SetActive(false);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
         Destroy(gameObject);
     }
 }

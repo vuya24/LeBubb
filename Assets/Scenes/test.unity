@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 431850184}
   m_Layer: 0
   m_Name: Isometric Diamond
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -792,7 +792,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2053290722
+--- !u!114 &2053290723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2053290717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8719a8bdf4504d4e8fe5c5c940862ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c0d6e9d38f4e1c45adb43c7061cc509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneField:

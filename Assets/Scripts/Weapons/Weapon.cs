@@ -28,6 +28,8 @@ public class Weapon : MonoBehaviour
 
     TargetingSystem targetingSystem;
 
+    public bool inRange = false;
+
     private void Awake()
     {
 
@@ -43,7 +45,7 @@ public class Weapon : MonoBehaviour
         turretDriver.LookAt(player.transform.position);
         turretDriver.Update();
 
-        if(IsInRange(player.transform.position) && !isShooting)
+        if (inRange && !isShooting)
         {
             isShooting = true;
             StartCoroutine(Shoot());
