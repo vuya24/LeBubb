@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Bullet : MonoBehaviour
 {
     public float speed = 5f;
+    public float spinSpeed = 5f;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -14,7 +15,7 @@ public class Bullet : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         rb.AddForce(transform.up * speed * rb.mass / Time.fixedDeltaTime);
-        
+        rb.angularVelocity = spinSpeed;
     }
 
     private void FixedUpdate()
