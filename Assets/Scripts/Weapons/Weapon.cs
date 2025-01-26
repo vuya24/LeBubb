@@ -5,10 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField]
-    public float damage, range, projectileSpeed = float.PositiveInfinity, spread, roundsPerMinute;
-
-    [SerializeField]
-    public int multishot = 5;
+    public float damage, range, projectileSpeed = 5, spread;
 
     public float ShootPeriod = 1;
     public float ProjectileLifeTime => range / projectileSpeed;
@@ -23,23 +20,18 @@ public class Weapon : MonoBehaviour
     Transform playerTransform;
 
     [SerializeField]
-    private GameObject projectile;
+    private Bullet projectile;
 
     [SerializeField]
     private Transform bulletPosition;
 
-    //private float soundPitchDispersion = 0.05f;
+    private float soundPitchDispersion = 0.05f;
 
     bool isShooting = false;
-
-    //[SerializeField]
-    //Bullet projectile;
 
     [SerializeField]
     TurretDriver turretDriver;
     public TurretDriver TurretDriver { get => turretDriver; private set => turretDriver = value; }
-
-    GameObject projectilePool;
 
     TargetingSystem targetingSystem;
 
@@ -58,45 +50,23 @@ public class Weapon : MonoBehaviour
             isShooting = true;
             StartCoroutine(Shoot());
         }
-
-        if (!IsInRange(playerTransform.position))
-        {
-            isShooting = false;
-        }
-    }
-
-    public void Trigger()
-    {
     }
 
     public bool IsInRange(Vector2 position)
     {
-        return (position - (Vector2)barrelTransform.position).magnitude < range;
-    }
-
-    void ShootProjectile()
-    {
-        GameObject bullet = ObjectPool.instance.GetPooledObject();
-
-        if (bullet != null)
-        {
-            bullet.transform.position = bulletPosition.position + gameObject.transform.up;
-            bullet.SetActive(true);
-        }
+        return (position - (Vector2)transform.position).magnitude < range;
     }
 
     IEnumerator Shoot()
     {
+        audioSource.pitch = Random.Range(1 - soundPitchDispersion, 1 + soundPitchDispersion);
+        audioSource.PlayOneShot(audioSource.clip);
 
-        //audioSource.pitch = Random.Range(1 - soundPitchDispersion, 1 + soundPitchDispersion);
+        var bubble = Instantiate(projectile, transform.position, transform.rotation);
+        bubble.speed = projectileSpeed;
+        Destroy(bubble.gameObject, ProjectileLifeTime);
+        yield return new WaitForSeconds(ShootPeriod);
 
-        //audioSource.PlayOneShot(audioSource.clip);
-
-        while(isShooting)
-        {
-            ShootProjectile();
-            yield return new WaitForSeconds(ShootPeriod);
-        }
-
+        isShooting = false;
     }
 }
