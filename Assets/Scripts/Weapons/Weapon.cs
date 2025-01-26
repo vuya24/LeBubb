@@ -17,13 +17,7 @@ public class Weapon : MonoBehaviour
     AudioSource audioSource;
 
     [SerializeField]
-    Transform playerTransform;
-
-    [SerializeField]
     private Bullet projectile;
-
-    [SerializeField]
-    private Transform bulletPosition;
 
     private float soundPitchDispersion = 0.05f;
 
@@ -31,7 +25,6 @@ public class Weapon : MonoBehaviour
 
     [SerializeField]
     TurretDriver turretDriver;
-    public TurretDriver TurretDriver { get => turretDriver; private set => turretDriver = value; }
 
     TargetingSystem targetingSystem;
 
@@ -42,10 +35,15 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        turretDriver.LookAt(playerTransform.position);
+        var player = PlayerController.singleton;
+
+        if (player == null)
+            return;
+
+        turretDriver.LookAt(player.transform.position);
         turretDriver.Update();
 
-        if(IsInRange(playerTransform.position) && !isShooting)
+        if(IsInRange(player.transform.position) && !isShooting)
         {
             isShooting = true;
             StartCoroutine(Shoot());

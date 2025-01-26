@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour
     [SerializeReference, SubclassPicker]
     Movement movement;
 
+    public static PlayerController singleton;
+
     Vector2 inputVector;
     // Start is called before the first frame update
     void Start()
     {
+        singleton = this;
         movement.Start(GetComponent<Rigidbody2D>());
         movement.SwitchToDirectMovement(true);
     }

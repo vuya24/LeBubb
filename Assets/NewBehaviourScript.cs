@@ -12,7 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             //Do whatever you want 
             Debug.Log("Hit");
-            SceneManager.LoadScene(collider.gameObject.GetComponent<SceneFieldRef>().SceneField.Name, LoadSceneMode.Single) ;            
+                       
         }
     }
 
