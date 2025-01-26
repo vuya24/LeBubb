@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7800464734273183085}
   - component: {fileID: 8845811272054195127}
   - component: {fileID: 2658602387451587780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4435836411485635659}
   - component: {fileID: 7444189423081191855}
   - component: {fileID: 6318009844484248559}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bubble Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5017,7 +5017,7 @@ GameObject:
   - component: {fileID: 6420266162975245992}
   - component: {fileID: 200618756432498328}
   - component: {fileID: 2456123916728336370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5100,7 +5100,7 @@ GameObject:
   - component: {fileID: 8069361511617160094}
   - component: {fileID: 593207699130718037}
   - component: {fileID: 8620405991736357687}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

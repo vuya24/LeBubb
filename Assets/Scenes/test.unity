@@ -560,9 +560,7 @@ MonoBehaviour:
   ShootPeriod: 1
   barrelTransform: {fileID: 1378339526}
   audioSource: {fileID: 1378339528}
-  playerTransform: {fileID: 431850183}
   projectile: {fileID: -828218818584490915, guid: 1a257c21acba14e4ca0a50d367d66b8a, type: 3}
-  bulletPosition: {fileID: 1378339526}
   turretDriver:
     angularSpeed: 60
     transform: {fileID: 1378339526}
@@ -673,42 +671,15 @@ GameObject:
   - component: {fileID: 2053290721}
   - component: {fileID: 2053290720}
   - component: {fileID: 2053290719}
-  - component: {fileID: 2053290718}
   - component: {fileID: 2053290722}
+  - component: {fileID: 2053290723}
   m_Layer: 0
   m_Name: Square
-  m_TagString: EndLevel
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &2053290718
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053290717}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 0.1
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &2053290719
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -838,3 +809,16 @@ MonoBehaviour:
     _name: SampleScene
     _path: Assets/Scenes/SampleScene.unity
     _buildIndex: 0
+--- !u!114 &2053290723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053290717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0d6e9d38f4e1c45adb43c7061cc509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: test

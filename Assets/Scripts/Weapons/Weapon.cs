@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour
         audioSource.pitch = Random.Range(1 - soundPitchDispersion, 1 + soundPitchDispersion);
         audioSource.PlayOneShot(audioSource.clip);
 
-        var bubble = Instantiate(projectile, transform.position, transform.rotation);
+        var bubble = Instantiate(projectile, barrelTransform.position, barrelTransform.rotation);
         bubble.speed = projectileSpeed;
         Destroy(bubble.gameObject, ProjectileLifeTime);
         yield return new WaitForSeconds(ShootPeriod);

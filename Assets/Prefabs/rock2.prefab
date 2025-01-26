@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3083409722897924844}
   - component: {fileID: 7511445546362441490}
   - component: {fileID: 485095227763143018}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3023656045114755026}
   - component: {fileID: 1374867647047675705}
   - component: {fileID: 1261386811661918518}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

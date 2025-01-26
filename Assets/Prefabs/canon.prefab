@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1725435479668572114}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 9115947754512087432}
   - component: {fileID: 7057998472772998734}
   - component: {fileID: 1942141931683423397}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 4121870851407183}
   - component: {fileID: 8446353642346320522}
   - component: {fileID: 6778537098366735561}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: canon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
