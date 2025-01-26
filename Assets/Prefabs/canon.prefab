@@ -254,20 +254,14 @@ MonoBehaviour:
   range: 5
   projectileSpeed: 5
   spread: 0
-  roundsPerMinute: 0
-  spinSpeed: 5
-  multishot: 5
   ShootPeriod: 3
-  ProjectileLifeTime: 2
   barrelTransform: {fileID: 1725435479668572114}
   audioSource: {fileID: 6778537098366735561}
-  playerTransform: {fileID: 8192336573090265423, guid: f5d320e17e3dc3f42b9a9fbf5aae8243, type: 3}
-  projectile: {fileID: 4413487413592967871, guid: 1a257c21acba14e4ca0a50d367d66b8a, type: 3}
-  bulletPosition: {fileID: 4851144873547615044}
-  inRange: 0
+  projectile: {fileID: -828218818584490915, guid: 1a257c21acba14e4ca0a50d367d66b8a, type: 3}
   turretDriver:
     angularSpeed: 60
     transform: {fileID: 4851144873547615044}
+  inRange: 0
 --- !u!82 &6778537098366735561
 AudioSource:
   m_ObjectHideFlags: 0
@@ -405,7 +399,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7729727632079332836}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

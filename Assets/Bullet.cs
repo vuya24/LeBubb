@@ -14,22 +14,27 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        if(rb == null)
+        {
+            return;
+        }
         rb.AddForce(transform.up * speed * rb.mass / Time.fixedDeltaTime);
         rb.angularVelocity = spinSpeed;
-    }
-
-    private void FixedUpdate()
-    {
-        print(rb.velocity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Scene scene = SceneManager.GetActiveScene();
+            if (rb == null)
+            {
+                
+                SceneManager.LoadScene(scene.name);
+                return;
+            }
             rb.velocity = Vector2.zero;
             gameObject.SetActive(false);
-            Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
         Destroy(gameObject);
